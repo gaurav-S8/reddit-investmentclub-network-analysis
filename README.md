@@ -9,16 +9,12 @@ Understanding user interaction networks in the r/InvestmentClub subreddit using 
 ![Status](https://img.shields.io/badge/Status-Completed-success.svg)
 ![Notebook](https://img.shields.io/badge/Jupyter-Notebook-yellow.svg)
 
----
-
 ## 📘 Overview
 
 This project analyzes community interaction patterns in **r/InvestmentClub**, a Reddit community focused on stock market discussions.  
 The aim is to examine how users connect, who influences discussion, and how communication structure reflects group behavior.
 
 We build a **directed interaction network** from Reddit conversations and apply **social network analysis** techniques to reveal communication hubs, community structure, and influence dynamics.
-
----
 
 ## 🔍 Project Goals
 
@@ -33,17 +29,15 @@ We build a **directed interaction network** from Reddit conversations and apply 
 - Visualize interaction structure and communities
 - Draw insights about participation dynamics in investing discussions
 
----
-
 ## 📂 Project Structure
 📦 reddit-investmentclub-network-analysis
-┣ 📁 Data/ # Final processed data
-┣ 📁 zips/ # Raw zipped Reddit dataset
-┣ 📁 plots/ # Visualizations (graphs, centrality bar charts)
-┣ 🧠 Code.ipynb # Main analysis notebook
-┣ 📄 Reddit_Data_Analysis_Coursework_Report.pdf
-┣ ⚙️ .gitignore
-┗ 📄 README.md
+├── 📁 Data/ # Processed data used for analysis
+├── 📁 zips/ # Raw zipped Reddit dataset
+├── 📁 plots/ # Network graphs & visualizations
+├── 📄 NetworkAnalysis_InvestmentClub.ipynb # Main Jupyter notebook
+├── 📄 Reddit_Data_Analysis_Coursework_Report.pdf
+├── 📄 .gitignore
+└── 📄 README.md
 
 ---
 
