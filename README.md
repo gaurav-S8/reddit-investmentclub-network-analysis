@@ -1,6 +1,6 @@
 # Reddit InvestmentClub — Network Analysis  
 
-Understanding user interaction networks in the r/InvestmentClub subreddit using social graph analysis and centrality metrics.
+Analyzing user interactions and influence dynamics within the r/InvestmentClub subreddit using social network analysis.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![NetworkX](https://img.shields.io/badge/Library-NetworkX-purple.svg)
@@ -11,23 +11,31 @@ Understanding user interaction networks in the r/InvestmentClub subreddit using 
 
 ## Overview
 
-This project analyzes community interaction patterns in **r/InvestmentClub**, a Reddit community focused on stock market discussions.  
-The aim is to examine how users connect, who influences discussion, and how communication structure reflects group behavior.
+This project examines communication patterns in **r/InvestmentClub**, a community focused on stock market and investing discussions.  
+We build a **directed interaction network** from Reddit conversations and apply **network science techniques** to analyze participation, influence, and community structure.
 
-We build a **directed interaction network** from Reddit conversations and apply **social network analysis** techniques to reveal communication hubs, community structure, and influence dynamics.
+Key questions explored:
+- Who drives discussions?
+- How do users cluster into topic-based sub-communities?
+- How resilient is the network if influential users leave?
+- Do participation patterns follow financial-social behavior trends?
+
+The analysis highlights **central influencers, community hubs, and help-seeker vs help-giver roles**, as well as how market events trigger spikes in activity.
+
 
 ## Project Goals
 
-- Extract user interaction graphs from Reddit discussions
-- Build a directed network where:
-  - **Nodes = Reddit users**
-  - **Edges = replies/mentions between users**
-- Compute centrality metrics to identify key members:
-  - Degree Centrality (engagement)
-  - Betweenness Centrality (information brokers)
-  - Eigenvector Centrality (influence within clusters)
-- Visualize interaction structure and communities
-- Draw insights about participation dynamics in investing discussions
+- Collect and preprocess Reddit discussion data
+- Construct a directed interaction network where  
+  - **Nodes = users**
+  - **Edges = reply/mention interactions**
+- Compute centrality metrics to quantify influence:
+  - Degree centrality (engagement)
+  - Betweenness centrality (information brokers)
+  - Eigenvector centrality (influence in key sub-groups)
+- Identify communities and key discussion clusters
+- Study how structural patterns reflect investment-focused group behavior
+
 
 ## Project Structure
 <pre>
@@ -41,63 +49,78 @@ We build a **directed interaction network** from Reddit conversations and apply 
 └── 📝 README.md
 </pre>
 
+
 ## Methods
 
-### Data Pipeline
-1. Load zipped Reddit data  
-2. Extract comments / submissions  
-3. Filter invalid users (e.g., `[deleted]`, bots)  
-4. Build directed edge list:  
-   `User A → User B` if **A replies to B**
+### Data Processing Pipeline
+1. Load Reddit dataset (zipped JSON)
+2. Parse user-to-user reply chains
+3. Remove invalid/unavailable users (`[deleted]`)
+4. Build directed edge list: User A → User B (A replies to B)
 
 ### Network Construction
-- Graph Type → **Directed Graph (DiGraph)**
-- Tools → pandas, NetworkX, matplotlib
-- Basic network stats calculated:
+- Graph type: **Directed Network (DiGraph)**
+- Libraries: `NetworkX`, `pandas`, `matplotlib`
+- Metrics computed:
   - Node/edge count
-  - Diameter & density
-  - Connected components
+  - Density & connected components
+  - Centrality measures
+  - Rich-club coefficient & network robustness
 
-## Key Visualizations & What They Show
+## 📊 Key Visualizations & Insights
 
-| Visualization | Insight |
-|--------------|--------|
-**Full User Interaction Graph (with isolated users)** | ~12.9k users visualized; ~4.6k users are isolated → many users post without interacting.  
-**Active Interaction Network (isolates removed)** | Dense core emerges → active users form a tightly connected financial discussion hub.  
-**Top-200 Users Network** | Hub-and-spoke structure → a few “super-users” dominate discussion (*Zurevu* is most central).  
-**Degree Centrality Ranking** | *Zurevu* has ~17× more connections than next user → extreme influence concentration.  
-**LCC Attack Simulation** | Removing ~5% top users collapses connectivity → network is dependent on a small elite core.  
-**Rich-Club Coefficient Curve** | High-degree users show selective inter-connection at top range → “elite cluster” behavior.  
-**Activity Timeline** | Stable long-term activity with a massive spike during market-event period (weeks 460–470).  
-**User Role Identification (Z-Score Analysis)** | ~6.5k help-seekers, ~6.2k help-givers, ~150 hybrid users → subreddit functions as a Q&A support hub.  
-**Topic Modeling (LDA)** | Focus on stocks, crypto, market trends, recession risk, and well-known financial figures.
+### 🔍 Full User Interaction Graph (with isolated users)
+> ~12.9k users visualized; ~4.6k users are isolated — many users post without interacting.
+
+![Full Network Graph](plots/Complete_Interaction_Graph.png)
+
+### 🔎 Active Interaction Network (isolates removed)
+> Removing isolates reveals a dense core — active users form a tightly connected financial discussion hub.
+
+![Active Network Graph](plots/User_Interaction_Graph.png)
+
+### 👑 Top-200 Users Network
+> Hub-and-spoke structure — a few “super-users” dominate discussion (*Zurevu* most central).
+
+![Top 200 Users Network](plots/User_Interaction_Top200_Graph.png)
+
+### 📈 Degree Centrality Ranking
+> *Zurevu* has ~17× more connections than the next user — extreme influence concentration.
+
+![Degree Centrality Bar Chart](plots/degree_centrality.png)
+
+### 🧠 Network Robustness Test (LCC Attack Simulation)
+> Removing top ~5% central users collapses connectivity — network depends on small elite core.
+
+![Largest Connected Component Attack](plots/Sensitivity_Analysis.png)
+
+### 👥 Rich-Club Coefficient Curve
+> High-degree users selectively connect with each other — “elite cluster” behavior observed.
+
+![Rich Club Coefficient](plots/Rich_Club_Effect_Analysis.png)
+
+### 🧾 User Role Classification (Z-Score Analysis)
+> ~6.5k help-seekers, ~6.2k help-givers, ~150 hybrids — subreddit functions as a Q&A and advice hub.
+
+![Z Score User Roles](plots/Z-Score_Analysis.png)
+
 
 ## Key Findings
 
-- Online finance communities show **power-law participation** (few talk, many listen)
-- Network is **super-user driven** — small elite controls information flow
-- Removing top users **destroys network cohesion**
-- Community acts as a **learning + advice hub** (help-seekers ↔ help-givers)
-- Discussion reacts strongly to **market events**
-- Topics revolve around **investment strategy, macroeconomics, and key stocks**
+- Participation follows a **power law distribution**, where most users post rarely while a small group is highly active  
+- The subreddit is **super user driven**, with a small core shaping most discussions and information flow  
+- Removing top users **significantly weakens network connectivity**, showing strong dependence on influential members  
+- Interaction patterns indicate the community functions as a **Q&A and learning hub**, with clear help seekers and help givers  
+- Activity spikes align with **major market events**, showing high sensitivity to financial news  
+- Topic modeling highlights focus on **stocks, macroeconomics, crypto, and market sentiment**
 
 
 ### How to Read the Network Graphs
 
 - **Nodes = users**, **Edges = interactions**
 - **Larger nodes** = more central / influential
-- **Tighter clusters** = sub-groups around topics/interest areas
-- **Isolated dots** = users who ask/post but never interact
-- **Bridges** = users who connect multiple communities
+- **Isolated dots** = users who post but never interact
 
-### Interpretation Example (Top-200 Network)
-
-- Large central node (*Zurevu*) = dominant discussion hub  
-- Few medium-sized nodes = secondary influencers  
-- Many small nodes around = regular users replying or seeking advice  
-- Structure = **hub-and-spoke**, typical in finance communities where knowledge concentrates
-
-> Result: Community trust and knowledge flow depend on a small “core circle” of influential users.
 
 ## How to Run
 
