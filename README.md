@@ -3,40 +3,44 @@
 Analyzing user interaction patterns and influence dynamics within the **r/InvestmentClub** subreddit.  
 This project focuses on **network science and time-series engagement patterns** to understand community behavior and influence structure. A brief topic analysis is included to highlight major conversation themes.
 
+## Tech & Tools
+
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![NetworkX](https://img.shields.io/badge/Library-NetworkX-purple.svg)
 ![Pandas](https://img.shields.io/badge/Data-Pandas-blue.svg)
 ![Graph](https://img.shields.io/badge/Analysis-Network%20Science-green.svg)
 ![Status](https://img.shields.io/badge/Status-Completed-success.svg)
-![Notebook](https://img.shields.io/badge/Jupyter-Notebook-yellow.svg)
+![Notebook](https://img.shields.io/badge/Jupyter-Notebook-yellow.svg) 
 
 
-## Tech Stack
-
-| Category | Tools |
-|---|---|
-Language | Python 3.10+  
-Libraries | Pandas, NetworkX, Matplotlib, Scikit-Learn  
-Environment | Jupyter Notebook  
-
-
-## Key Highlights
+## Overview
 
 - Built a **directed interaction network** (~12.9K users, 14K+ edges, 10-year data)
-- Identified **super-influencers** driving most discussions (power-law behavior)
-- Removing the top ~5% users **collapses connectivity** → leadership-dependent network
-- Classified **help-seekers vs help-givers vs hybrid users**
-- Performed **LDA topic modeling** to uncover investment conversation themes
-- Analyzed **temporal posting patterns** & activity spikes aligned with market events
+- Identified **super-influencers** shaping financial discussions
+- Network **collapses when top ~5% users removed**
+- **Help-seekers vs help-givers** classification via Z-score analysis
+- **Topic modeling (LDA)** to reveal investment themes
+- Activity spikes match **major market events**
 
 > Result: The community behaves like a **Q&A financial hub** with a small core of dominant contributors who shape discussions and information flow.
 
+## Key Visualizations
+
+| Full Network (with isolates) | Core Network (Top Users) |
+|---|---|
+| ![Full Graph](plots/Complete_Interaction_Graph.png) | ![Core Graph](plots/User_Interaction_Top200_Graph.png) |
+
+| Network Robustness Test |
+|---|
+| ![LCC Removal](plots/Sensitivity_Analysis.png) |
+
 ## Objectives
-- Map user-to-user communication flows
-- Identify key influencers and structural hubs
-- Measure network robustness & elite clustering behavior
-- Understand community behavior over time
-- Extract dominant topics driving discussions
+
+- Map user-to-user interaction flows
+- Identify central & influential users
+- Test community resilience to influencer removal
+- Analyze posting behavior over time
+- Explore main discussion themes
 
 ## Methodology
 
@@ -51,6 +55,16 @@ User Role Analysis | Activity Z-Score (help-giver vs seeker)
 Topic Modeling | LDA on high-engagement submissions  
 Visualization | Matplotlib, NetworkX layouts
 
+## Key Insights
+
+| Insight | Summary |
+|--------|--------|
+Influence | Power-law — few users dominate  
+Fragility | Removing elites breaks network  
+Roles | ~50% help-seekers, ~50% helpers, ~150 hybrid  
+Market Reaction | Activity spikes around major events  
+Topics | Stocks, macroeconomics, crypto, EVs
+
 ## Repository Structure
 <pre>
 📦 reddit-investmentclub-network-analysis
@@ -62,32 +76,14 @@ Visualization | Matplotlib, NetworkX layouts
 └── README.md
 </pre>
 
-## Key Findings
-
-| Insight | Summary |
-|--------|--------|
-Influence Concentration | Small elite group dominates conversations (power-law)  
-Network Fragility | Top users removal → rapid collapse in connectivity  
-User Roles | ~50% help-seekers, ~50% help-givers, ~150 hybrid roles  
-Market Sensitivity | Activity spikes around major financial events  
-Topic Themes | Stocks, macroeconomics, crypto, EVs, recession fear
-
-## 📊 Key Visualizations
-
-| Complete Interaction Network | Active Core Network |
-|---|---|
-| ![Full Graph](plots/Complete_Interaction_Graph.png) | ![Core Graph](plots/User_Interaction_Top200_Graph.png) |
-
-| Network Robustness Test |
-|---|
-| ![LCC Removal](plots/Sensitivity_Analysis.png) |
-
-> Visualizing how community structure relies on a small core of highly connected users.
-
 ## How to Run
 
 ```bash
 git clone https://github.com/gaurav-S8/reddit-investmentclub-network-analysis.git
 cd reddit-investmentclub-network-analysis
+jupyter notebook NetworkAnalysis_InvestmentClub.ipynb
+
+
+pip install pandas networkx matplotlib scikit-learn 
 pip install -r requirements.txt
 jupyter notebook NetworkAnalysis_InvestmentClub.ipynb
