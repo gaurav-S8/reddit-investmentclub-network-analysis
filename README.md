@@ -52,7 +52,7 @@ User Roles | ~50% help-seekers, ~50% help-givers, ~150 hybrid roles
 Market Sensitivity | Activity spikes around major financial events  
 Topic Themes | Stocks, macroeconomics, crypto, EVs, recession fear
 
-## 📂 Repository Structure
+## Repository Structure
 <pre>
 📦 reddit-investmentclub-network-analysis
 ├── Data/ # Processed data
@@ -63,7 +63,7 @@ Topic Themes | Stocks, macroeconomics, crypto, EVs, recession fear
 └── README.md
 </pre>
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Category | Tools |
 |---|---|
@@ -71,7 +71,7 @@ Language | Python 3.10+
 Libraries | Pandas, NetworkX, Matplotlib, Scikit-Learn  
 Environment | Jupyter Notebook  
 
-## 🚀 How to Run
+## How to Run
 
 ```bash
 git clone https://github.com/gaurav-S8/reddit-investmentclub-network-analysis.git
