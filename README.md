@@ -83,7 +83,5 @@ git clone https://github.com/gaurav-S8/reddit-investmentclub-network-analysis.gi
 cd reddit-investmentclub-network-analysis
 jupyter notebook NetworkAnalysis_InvestmentClub.ipynb
 
-
-pip install pandas networkx matplotlib scikit-learn 
-pip install -r requirements.txt
-jupyter notebook NetworkAnalysis_InvestmentClub.ipynb
+Install Libraries if needed ->
+pip install pandas networkx matplotlib scikit-learn
