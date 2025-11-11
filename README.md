@@ -11,6 +11,15 @@ This project focuses on **network science and time-series engagement patterns** 
 ![Notebook](https://img.shields.io/badge/Jupyter-Notebook-yellow.svg)
 
 
+## Tech Stack
+
+| Category | Tools |
+|---|---|
+Language | Python 3.10+  
+Libraries | Pandas, NetworkX, Matplotlib, Scikit-Learn  
+Environment | Jupyter Notebook  
+
+
 ## Key Highlights
 
 - Built a **directed interaction network** (~12.9K users, 14K+ edges, 10-year data)
@@ -40,17 +49,7 @@ Community Structure | Rich-club, Core-periphery behavior
 Robustness Test | Largest Connected Component (node removal)  
 User Role Analysis | Activity Z-Score (help-giver vs seeker)  
 Topic Modeling | LDA on high-engagement submissions  
-Visualization | Matplotlib, NetworkX layouts  
-
-## Key Findings
-
-| Insight | Summary |
-|--------|--------|
-Influence Concentration | Small elite group dominates conversations (power-law)  
-Network Fragility | Top users removal → rapid collapse in connectivity  
-User Roles | ~50% help-seekers, ~50% help-givers, ~150 hybrid roles  
-Market Sensitivity | Activity spikes around major financial events  
-Topic Themes | Stocks, macroeconomics, crypto, EVs, recession fear
+Visualization | Matplotlib, NetworkX layouts
 
 ## Repository Structure
 <pre>
@@ -63,13 +62,27 @@ Topic Themes | Stocks, macroeconomics, crypto, EVs, recession fear
 └── README.md
 </pre>
 
-## Tech Stack
+## Key Findings
 
-| Category | Tools |
+| Insight | Summary |
+|--------|--------|
+Influence Concentration | Small elite group dominates conversations (power-law)  
+Network Fragility | Top users removal → rapid collapse in connectivity  
+User Roles | ~50% help-seekers, ~50% help-givers, ~150 hybrid roles  
+Market Sensitivity | Activity spikes around major financial events  
+Topic Themes | Stocks, macroeconomics, crypto, EVs, recession fear
+
+## 📊 Key Visualizations
+
+| Complete Interaction Network | Active Core Network |
 |---|---|
-Language | Python 3.10+  
-Libraries | Pandas, NetworkX, Matplotlib, Scikit-Learn  
-Environment | Jupyter Notebook  
+| ![Full Graph](plots/Complete_Interaction_Graph.png) | ![Core Graph](plots/User_Interaction_Top200_Graph.png) |
+
+| Network Robustness Test |
+|---|
+| ![LCC Removal](plots/S.png) |
+
+> Visualizing how community structure relies on a small core of highly connected users.
 
 ## How to Run
 
