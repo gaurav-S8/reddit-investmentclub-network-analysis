@@ -1,7 +1,7 @@
 # Reddit InvestmentClub — Social Network Analysis
 
 Analyzing user interaction patterns and influence dynamics within the **r/InvestmentClub** subreddit.  
-This project applies **network science, NLP, and time-series analysis** to understand how investment communities form, engage, and evolve.
+This project focuses on **network science and time-series engagement patterns** to understand community behavior and influence structure. A brief topic analysis is included to highlight major conversation themes.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![NetworkX](https://img.shields.io/badge/Library-NetworkX-purple.svg)
