@@ -80,7 +80,7 @@ Topic Themes | Stocks, macroeconomics, crypto, EVs, recession fear
 
 | Network Robustness Test |
 |---|
-| ![LCC Removal](plots/S.png) |
+| ![LCC Removal](plots/Sensitivity_Analysis.png) |
 
 > Visualizing how community structure relies on a small core of highly connected users.
 
