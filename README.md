@@ -82,6 +82,9 @@ Topics | Stocks, macroeconomics, crypto, EVs
 git clone https://github.com/gaurav-S8/reddit-investmentclub-network-analysis.git
 cd reddit-investmentclub-network-analysis
 jupyter notebook NetworkAnalysis_InvestmentClub.ipynb
+```
 
-Install Libraries if needed ->
+### Install Required Libraries (if needed)
+```bash
 pip install pandas networkx matplotlib scikit-learn
+```
