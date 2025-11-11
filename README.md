@@ -1,6 +1,7 @@
-# Reddit InvestmentClub — Network Analysis  
+# Reddit InvestmentClub — Social Network Analysis
 
-Analyzing user interactions and influence dynamics within the r/InvestmentClub subreddit using social network analysis.
+Analyzing user interaction patterns and influence dynamics within the **r/InvestmentClub** subreddit.  
+This project applies **network science, NLP, and time-series analysis** to understand how investment communities form, engage, and evolve.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![NetworkX](https://img.shields.io/badge/Library-NetworkX-purple.svg)
@@ -9,124 +10,71 @@ Analyzing user interactions and influence dynamics within the r/InvestmentClub s
 ![Status](https://img.shields.io/badge/Status-Completed-success.svg)
 ![Notebook](https://img.shields.io/badge/Jupyter-Notebook-yellow.svg)
 
-## Overview
 
-This project examines communication patterns in **r/InvestmentClub**, a community focused on stock market and investing discussions.  
-We build a **directed interaction network** from Reddit conversations and apply **network science techniques** to analyze participation, influence, and community structure.
+## Key Highlights
 
-Key questions explored:
-- Who drives discussions?
-- How do users cluster into topic-based sub-communities?
-- How resilient is the network if influential users leave?
-- Do participation patterns follow financial-social behavior trends?
+- Built a **directed interaction network** (~12.9K users, 14K+ edges, 10-year data)
+- Identified **super-influencers** driving most discussions (power-law behavior)
+- Removing the top ~5% users **collapses connectivity** → leadership-dependent network
+- Classified **help-seekers vs help-givers vs hybrid users**
+- Performed **LDA topic modeling** to uncover investment conversation themes
+- Analyzed **temporal posting patterns** & activity spikes aligned with market events
 
-The analysis highlights **central influencers, community hubs, and help-seeker vs help-giver roles**, as well as how market events trigger spikes in activity.
+> Result: The community behaves like a **Q&A financial hub** with a small core of dominant contributors who shape discussions and information flow.
 
+## Objectives
+- Map user-to-user communication flows
+- Identify key influencers and structural hubs
+- Measure network robustness & elite clustering behavior
+- Understand community behavior over time
+- Extract dominant topics driving discussions
 
-## Project Goals
+## Methodology
 
-- Collect and preprocess Reddit discussion data
-- Construct a directed interaction network where  
-  - **Nodes = users**
-  - **Edges = reply/mention interactions**
-- Compute centrality metrics to quantify influence:
-  - Degree centrality (engagement)
-  - Betweenness centrality (information brokers)
-  - Eigenvector centrality (influence in key sub-groups)
-- Identify communities and key discussion clusters
-- Study how structural patterns reflect investment-focused group behavior
-
-
-## Project Structure
-<pre>
-📦 reddit-investmentclub-network-analysis
-├── 📁 Data/                         # Processed data for analysis
-├── 📁 zips/                         # Raw zipped Reddit dataset
-├── 📁 plots/                        # Network visualizations
-├── 📄 NetworkAnalysis_InvestmentClub.ipynb   # Main notebook
-├── 📄 Reddit_Data_Analysis_Coursework_Report.pdf
-├── ⚙️ .gitignore
-└── 📝 README.md
-</pre>
-
-
-## Methods
-
-### Data Processing Pipeline
-1. Load Reddit dataset (zipped JSON)
-2. Parse user-to-user reply chains
-3. Remove invalid/unavailable users (`[deleted]`)
-4. Build directed edge list: User A → User B (A replies to B)
-
-### Network Construction
-- Graph type: **Directed Network (DiGraph)**
-- Libraries: `NetworkX`, `pandas`, `matplotlib`
-- Metrics computed:
-  - Node/edge count
-  - Density & connected components
-  - Centrality measures
-  - Rich-club coefficient & network robustness
-
-## 📊 Key Visualizations & Insights
-
-### 🔍 Full User Interaction Graph (with isolated users)
-> ~12.9k users visualized; ~4.6k users are isolated — many users post without interacting.
-
-![Full Network Graph](plots/Complete_Interaction_Graph.png)
-
-### 🔎 Active Interaction Network (isolates removed)
-> Removing isolates reveals a dense core — active users form a tightly connected financial discussion hub.
-
-![Active Network Graph](plots/User_Interaction_Graph.png)
-
-### 👑 Top-200 Users Network
-> Hub-and-spoke structure — a few “super-users” dominate discussion (*Zurevu* most central).
-
-![Top 200 Users Network](plots/User_Interaction_Top200_Graph.png)
-
-### 📈 Degree Centrality Ranking
-> *Zurevu* has ~17× more connections than the next user — extreme influence concentration.
-
-![Degree Centrality Bar Chart](plots/degree_centrality.png)
-
-### 🧠 Network Robustness Test (LCC Attack Simulation)
-> Removing top ~5% central users collapses connectivity — network depends on small elite core.
-
-![Largest Connected Component Attack](plots/Sensitivity_Analysis.png)
-
-### 👥 Rich-Club Coefficient Curve
-> High-degree users selectively connect with each other — “elite cluster” behavior observed.
-
-![Rich Club Coefficient](plots/Rich_Club_Effect_Analysis.png)
-
-### 🧾 User Role Classification (Z-Score Analysis)
-> ~6.5k help-seekers, ~6.2k help-givers, ~150 hybrids — subreddit functions as a Q&A and advice hub.
-
-![Z Score User Roles](plots/Z-Score_Analysis.png)
-
+| Step | Techniques |
+|------|-----------|
+Data Collection | Reddit JSON, Pandas preprocessing  
+Network Construction | Directed DiGraph (NetworkX)  
+Centrality Analysis | Degree, Eigenvector, Betweenness  
+Community Structure | Rich-club, Core-periphery behavior  
+Robustness Test | Largest Connected Component (node removal)  
+User Role Analysis | Activity Z-Score (help-giver vs seeker)  
+Topic Modeling | LDA on high-engagement submissions  
+Visualization | Matplotlib, NetworkX layouts  
 
 ## Key Findings
 
-- Participation follows a **power law distribution**, where most users post rarely while a small group is highly active  
-- The subreddit is **super user driven**, with a small core shaping most discussions and information flow  
-- Removing top users **significantly weakens network connectivity**, showing strong dependence on influential members  
-- Interaction patterns indicate the community functions as a **Q&A and learning hub**, with clear help seekers and help givers  
-- Activity spikes align with **major market events**, showing high sensitivity to financial news  
-- Topic modeling highlights focus on **stocks, macroeconomics, crypto, and market sentiment**
+| Insight | Summary |
+|--------|--------|
+Influence Concentration | Small elite group dominates conversations (power-law)  
+Network Fragility | Top users removal → rapid collapse in connectivity  
+User Roles | ~50% help-seekers, ~50% help-givers, ~150 hybrid roles  
+Market Sensitivity | Activity spikes around major financial events  
+Topic Themes | Stocks, macroeconomics, crypto, EVs, recession fear
 
+## 📂 Repository Structure
+<pre>
+📦 reddit-investmentclub-network-analysis
+├── Data/ # Processed data
+├── zips/ # Raw JSON data
+├── plots/ # Network visualizations
+├── NetworkAnalysis_InvestmentClub.ipynb
+├── Reddit_Data_Analysis_Coursework_Report.pdf
+└── README.md
+</pre>
 
-### How to Read the Network Graphs
+## 🛠️ Tech Stack
 
-- **Nodes = users**, **Edges = interactions**
-- **Larger nodes** = more central / influential
-- **Isolated dots** = users who post but never interact
+| Category | Tools |
+|---|---|
+Language | Python 3.10+  
+Libraries | Pandas, NetworkX, Matplotlib, Scikit-Learn  
+Environment | Jupyter Notebook  
 
+## 🚀 How to Run
 
-## How to Run
-
-1. Open `Code.ipynb`
-2. Ensure required libraries are installed:
-
-``` bash
-pip install pandas networkx matplotlib
-```
+```bash
+git clone https://github.com/gaurav-S8/reddit-investmentclub-network-analysis.git
+cd reddit-investmentclub-network-analysis
+pip install -r requirements.txt
+jupyter notebook NetworkAnalysis_InvestmentClub.ipynb
